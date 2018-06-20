@@ -27,4 +27,4 @@ const newSchema = mongoose.Schema({
   },
 });
 
-export default mongoose.model('players', newSchema);
+export default mongoose.model('model', newSchema);

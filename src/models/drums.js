@@ -3,7 +3,7 @@
 import mongoose from 'mongoose';
 
 
-const newSchema = mongoose.Schema({
+const drumsSchema = mongoose.Schema({
   name: {
     type: String,
     required: true,
@@ -27,4 +27,4 @@ const newSchema = mongoose.Schema({
   },
 });
 
-export default mongoose.model('drums', newSchema);
+export default mongoose.model('drums', drumsSchema);

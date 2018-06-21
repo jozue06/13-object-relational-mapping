@@ -5,9 +5,9 @@ module.exports = function (wallaby) {
   return{
     
 
-    files: ['./server/**/*.js', './server/src/*.js'],
+    files: [ './src/**/*.js'],
     
-    tests: ['./__test__/**/*.test.js'],
+    tests: ['./__test__/**/**/*.test.js'],
 
     compilers: {
       '**/*.js': wallaby.compilers.babel({

@@ -2,7 +2,7 @@
 
 require('babel-register');
 const superagent = require('superagent');
-const app = require('../../../src/app.js');
+const app = require( '../../../src/app.js');
 
 describe('API', () => {
 
@@ -15,7 +15,7 @@ describe('API', () => {
   });
 
   it('gets a 200 response on a good model', () => {
-    return superagent.get('http://localhost:8888/api/v1/bar')
+    return superagent.get('http://localhost:8888/api/v1/foo')
       .then(response => {
         expect(response.statusCode).toEqual(200);
       })

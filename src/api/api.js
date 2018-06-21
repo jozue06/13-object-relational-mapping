@@ -5,7 +5,7 @@ const router = express.Router();
 
 // Dynamic Models
 // This will use a model matching /:model/ in all routes that have a model parameter
-import modelFinder from '../middleware/model-switch.js';
+import modelFinder from '../middleware/modelSwitch';
 router.param('model', modelFinder);
 
 let sendJSON = (res,data) => {

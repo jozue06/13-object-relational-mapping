@@ -37,6 +37,7 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-flow": "^6.23.0",
-    "flow-bin": "^0.74.0"
+    "flow-bin": "^0.74.0",
+    "mockgoose": "^7.3.5"
   }
 }

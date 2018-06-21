@@ -3,8 +3,8 @@
 export default (dir) => {
 
   const fakeMongo = {
-    find: () => Promise.resolve([]),
-    findOne: () => Promise.resolve({}),
+    find: () => Promise.resolve(['foo']),
+    findById: () => Promise.resolve({}),
     save: data => Promise.resolve(data),
     findOneAndDelete: () => Promise.resolve({}),
   };

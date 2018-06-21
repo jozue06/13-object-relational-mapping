@@ -47,5 +47,22 @@ router.post('/api/v1/:model', (req,res,next) => {
     .catch( next );
 });
 
+router.put('/api/v1/:model/:id', (req,res,next) => {
+  if(!req.model.id){return err;}
+  let record = new req.model(req.body);
+  record.save()
+    .then( data => sendJSON(res,data) )
+    .catch( next );
+});
+
+router.delete('/api/v1/:model/:id', (req,res,next) => {
+  console.log('hit delete route');
+  if(!req.model.id){return err;}
+  let record = new req.model(req.body);
+  record.findOneAndDelete(req.body.id)
+    .then( data => sendJSON(res,data) )
+    .catch( next );
+});
+
 
 export default router;

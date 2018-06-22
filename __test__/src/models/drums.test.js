@@ -26,14 +26,14 @@ describe('API', () => {
   // const PORT = 8888;
   beforeAll( (done) => {
     mockgoose.preparStorage().then(()=>{
-      mongoose.connect('mongodb://localhost/drums', ()=>{
-        done()
-      })
-    })
-    })
+      mongoose.connect('mongodb://localhost/drums').then(()=>{
+        done();
+      });
+    });
+    });
     app.start(PORT);
   });
-  afterAll( () => {
+  afterEach( () => {
     app.stop();
   });
   

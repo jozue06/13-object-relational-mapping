@@ -1,30 +1,27 @@
 'use strict';
 
-import mongoose from 'mongoose';
+import mongoose, {Schema} from 'mongoose';
 
+const schema = new Schema({
 
-const drumsSchema = mongoose.Schema({
-  name: {
+  drumName: {
     type: String,
     required: true,
   },
-  position: {
-    type: String,
-    uppercase: true,
+  diameter: {
+    type: Number,
     required: true,
   },
-  bats: {
+  woodType: {
     type: String,
     required: true,
-    default: 'R',
-    enum: ['R', 'r', 'L', 'l'],
+    default: 'Maple',
   },
-  throws: {
+  color: {
     type: String,
     required: true,
-    default: 'R',
-    enum: ['R', 'r', 'L', 'l'],
   },
+  drumSet: {type: Schema.Types.ObjectId, ref: 'Drum Set' },
 });
 
-export default mongoose.model('drums', drumsSchema);
+export default mongoose.model('Drums', schema);

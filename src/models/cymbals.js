@@ -1,30 +1,24 @@
 'use strict';
 
-import mongoose from 'mongoose';
+import mongoose, {Schema} from 'mongoose';
 
+const schema = new Schema({
 
-const cymbalsSchema = mongoose.Schema({
-  name: {
+  cymbalType: {
     type: String,
     required: true,
   },
-  position: {
+  diameter: {
     type: String,
     uppercase: true,
     required: true,
   },
-  bats: {
+  finish: {
     type: String,
     required: true,
-    default: 'R',
-    enum: ['R', 'r', 'L', 'l'],
+    default: 'Bright',
   },
-  throws: {
-    type: String,
-    required: true,
-    default: 'R',
-    enum: ['R', 'r', 'L', 'l'],
-  },
+  drumSet: {type: Schema.Types.ObjectId, ref: 'Drum Set' },
 });
 
-export default mongoose.model('cymbals', cymbalsSchema);
+export default mongoose.model('cymbals', schema);

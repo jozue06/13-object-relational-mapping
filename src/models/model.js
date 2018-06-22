@@ -1,8 +1,22 @@
 'use strict';
 
-import mongoose from 'mongoose';
 
 
+import mongoose, {Schema} from 'mongoose';
+
+const schema = new Schema({
+  name : String,
+});
+
+export default mongoose.model('Band', schema);
+
+
+
+// import mongoose from 'mongoose';
+
+
+
+/*
 const newSchema = mongoose.Schema({
   name: {
     type: String,
@@ -28,3 +42,5 @@ const newSchema = mongoose.Schema({
 });
 
 export default mongoose.model('model', newSchema);
+
+*/

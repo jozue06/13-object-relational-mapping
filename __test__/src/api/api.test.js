@@ -240,7 +240,7 @@ describe('Drum model', () => {
   2. Have check in api for {} body
   3. Use pre save hook middleware
   */
-  xit('should reject on POST when no body provided', () => {
+  xit('should reject on POST or CREATE when no body provided', () => {
     return Drum
       .create({})
       .then(Drum => {
@@ -251,7 +251,7 @@ describe('Drum model', () => {
       });
   });
 
-  xit('should reject on put then id not found', () => {
+  xit('should reject on FIND then id not found', () => {
     return Drum.findByIdAndUpdate('wrong', {
       rank: 100,
     })
@@ -266,7 +266,7 @@ describe('Drum model', () => {
   2. Have check in api for {} body
   3. Use pre save hook middleware
   */
-  xit('should reject on PUT when no body provided', () => {
+  xit('should reject on PUT or CREATE when no body provided', () => {
     return Drum
       .create({
         name: 'Tina Turner',

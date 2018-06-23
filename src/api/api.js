@@ -14,7 +14,7 @@ let sendJSON = (res,data) => {
   res.end();
 };
 
-router.get('/', (req,res,next) => {
+router.get('/', (req,res) => {
   res.statusCode = 200;
   res.statusMessage = 'OK';
   res.setHeader('Content-Type', 'application/json');
@@ -35,10 +35,17 @@ router.get('/api/v1/:model/:id', (req,res,next) => {
 });
 
 router.post('/api/v1/:model', (req,res,next) => {
+  console.log('!!!!!!!!POST!!!!!!!!!!!');
   let record = new req.model(req.body);
+  console.log('!!!!!!!!what a REQ.BODY!!!!!!!!!!!  ', req.body);
   record.save()
-    .then( data => sendJSON(res,data) )
-    .catch( next );
+    .then( data => {
+      console.log('!!!!!! INSIDE THE THEN!!!!!!!!');
+      sendJSON(res,data) ;
+    })
+    .catch( err => {
+      console.log('!!!!!! ERRROR???!!!!!!     ', err);
+      next();});
 });
 
 router.put('/api/v1/:model/:id', (req,res,next) => {

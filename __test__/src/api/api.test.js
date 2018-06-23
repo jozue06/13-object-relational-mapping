@@ -104,7 +104,7 @@ describe('DrumSet', () => {
       .populate('DrumSet')
       .exec();
 
-    expect(foundNewDrum.DrumSet.name).toBe(DrumSetObj.drumName);
+    expect(foundNewDrum.drumName).toBe(DrumSetObj.drumName);
 
   });
 });

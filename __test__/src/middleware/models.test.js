@@ -5,7 +5,7 @@ jest.mock('require-dir');
 import modelFinder from '../../../src/middleware/modelSwitch.js';
 
 describe('Model Finder Middleware', () => {
-  xit('throws an error if a valid model is not presnt', () => {
+  it('throws an error if a valid model is not presnt', () => {
     let req = {};
     let res = {};
     let next = () => {};
@@ -15,7 +15,7 @@ describe('Model Finder Middleware', () => {
   });
 
 
-  xit('returns a model object/function when a valid model is requested', () => {
+  it('returns a model object/function when a valid model is requested', () => {
     let req = {params:{model:'foo'}};
     let res = {};
     let next = () => {};

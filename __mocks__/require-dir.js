@@ -1,5 +1,6 @@
 'use strict';
-
+import drums from '../src/models/drums.js';
+import cymbals from '../src/models/cymbals.js';
 export default (dir) => {
 
   const fakeMongo = {
@@ -7,6 +8,7 @@ export default (dir) => {
     findById: () => Promise.resolve({}),
     save: data => Promise.resolve(data),
     findOneAndDelete: () => Promise.resolve({}),
+    findByIdAndUpdate: () => Promise.resolve([]),
   };
 
   if (typeof dir !== 'string') {
@@ -21,6 +23,12 @@ export default (dir) => {
     },
     'baz': {
       default: fakeMongo,
+    },
+    'drums': {
+      default: drums,
+    },
+    'cymbals': {
+      default: cymbals,
     },
   };
 };

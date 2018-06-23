@@ -22,7 +22,7 @@ router.get('/', (req,res) => {
 });
 
 router.get('/api/v1/:model', (req,res,next) => {
-  req.model.find({})
+  req.model.find()
     .then( data => sendJSON(res,data) )
     .catch( next );
 });
@@ -50,7 +50,7 @@ router.post('/api/v1/:model', (req,res,next) => {
 router.put('/api/v1/:model/:id', (req,res,next) => {
   if(!req.model.id){return err;}
   let record = new req.model(req.body);
-  record.save()
+  record.findOneAndUpdate()
     .then( data => sendJSON(res,data) )
     .catch( next );
 });

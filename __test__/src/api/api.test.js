@@ -46,10 +46,11 @@ describe('api module', () => {
 
         try {
           const Drum = JSON.parse(results.text);
-          expect(Drum.drumName).toBe(DrumObj.drumName);
+        //   console.log(results)
           expect(Drum._id).toBeDefined();
+          expect(Drum.drumName).toBe(DrumObj.drumName);
         } catch (error) {
-          fail(err);
+          fail(error);
         }
       }).catch(err => fail(err));
   });
@@ -75,7 +76,6 @@ describe('api module', () => {
 
   });
 
-  xit('to do - delete, error codes, etc.', () => {});
 
 });
 
@@ -103,19 +103,18 @@ describe('DrumSet', () => {
       .findById(newDrum._id)
       .populate('DrumSet')
       .exec();
-
-    expect(foundNewDrum.drumName).toBe(DrumSetObj.drumName);
+    expect(foundNewDrum.drumName).toBe(DrumObj.drumName);
 
   });
 });
 
 describe('Drum model', () => {
 
-  xit('Model should exist', () => {
+  it('Model should exist', () => {
     expect(Drum).toBeDefined();
   });
 
-  xit('should give zilch when asking for all Drums first time', () => {
+  it('should give zilch when asking for all Drums first time', () => {
 
     return Drum.find().then(Drums => {
       expect(Drums).toEqual([]);
@@ -125,7 +124,7 @@ describe('Drum model', () => {
 
   });
 
-  xit('should create a Drum', () => {
+  it('should create a Drum', () => {
 
     // remember to create a rpoiut
     let drum = new Drum({
@@ -138,7 +137,7 @@ describe('Drum model', () => {
     }).catch(err => fail(err));
   });
 
-  xit('should get collection of created Drums', () => {
+  it('should get collection of created Drums', () => {
 
 
     const DrumObj = {
@@ -165,7 +164,7 @@ describe('Drum model', () => {
 
   });
 
-  xit('should find one by id', () => {
+  it('should find one by id', () => {
 
     const DrumObj = {
       drumName: 'Barry Manilow Snare',
@@ -183,7 +182,7 @@ describe('Drum model', () => {
     }).catch(fail);
   });
 
-  xit('should delete a Drum - async/await version', async () => {
+  it('should delete a Drum - async/await version', async () => {
 
     const newDrum = {
       drumName: 'Aretha Franklin Kick',
@@ -226,7 +225,7 @@ describe('Drum model', () => {
 //       });
 //   });
 
-  xit('should reject on find when id not found', () => {
+  it('should reject on find when id not found', () => {
 
     return Drum.findById('wrong').then(() => {
       fail('should not get here');
@@ -235,12 +234,7 @@ describe('Drum model', () => {
     });
   });
 
-  /* NOTE: several ways to handle this
-  1. make fields required in model
-  2. Have check in api for {} body
-  3. Use pre save hook middleware
-  */
-  xit('should reject on POST or CREATE when no body provided', () => {
+  it('should reject on POST or CREATE when no body provided', () => {
     return Drum
       .create({})
       .then(Drum => {
@@ -251,7 +245,7 @@ describe('Drum model', () => {
       });
   });
 
-  xit('should reject on FIND then id not found', () => {
+  it('should reject on FIND then id not found', () => {
     return Drum.findByIdAndUpdate('wrong', {
       rank: 100,
     })
@@ -260,31 +254,4 @@ describe('Drum model', () => {
         expect(err).toBeDefined();
       });
   });
-
-  /* NOTE: several ways to handle this. Expiriment!
-  1. make fields required in model
-  2. Have check in api for {} body
-  3. Use pre save hook middleware
-  */
-  xit('should reject on PUT or CREATE when no body provided', () => {
-    return Drum
-      .create({
-        name: 'Tina Turner',
-        rank: 12,
-      })
-      .then(Drum => {
-
-        return Drum
-          .findByIdAndUpdate(Drum._id, {})
-          .then(() => {
-            fail('wtf');
-          }).catch(err => {
-            expect(err).toBe({});
-          });
-      })
-      .catch(err => {
-        expect(err).toBe({});
-      });
-  });
-
 });

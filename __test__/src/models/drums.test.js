@@ -11,14 +11,14 @@ afterEach(modelsHelper.afterEach);
 describe('drums tests', () => {
 
 
-  xit('check for model', () => {
+  it('check for model', () => {
 
     expect(Drums).toBeDefined();
 
   });
 
 
-  xit('should find zero', () => {
+  it('should find zero', () => {
 
     return Drums.find()
       .then(drumsRes =>{
@@ -30,7 +30,7 @@ describe('drums tests', () => {
 
   });
 
-  xit('should create drum', ()=>{
+  it('should create drum', ()=>{
 
     let drum = new Drums({
       drumName : 'Snare',

@@ -14,12 +14,12 @@ const schema = new Schema({
   },
   woodType: {
     type: String,
-    required: true,
+    // required: true,
     default: 'Maple',
   },
   color: {
     type: String,
-    required: true,
+    // required: true,
   },
   drumSet: {type: Schema.Types.ObjectId, ref: 'Drum Set' },
 });

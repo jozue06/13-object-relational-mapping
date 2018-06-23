@@ -2,7 +2,6 @@
 
 import express from 'express';
 const router = express.Router();
-
 import modelFinder from '../middleware/modelSwitch';
 router.param('model', modelFinder);
 
